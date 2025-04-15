@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 8rem;
+}
+
+.card {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 5px;
+    padding: 5rem;
+    height: 87vh;
+    width: 35vw;
+}
+
+.heading-prim {
+    font-size: 5rem;
+    text-align: center;
+}
+
+.front-page--info {
+    margin-top: 10rem;
+}
+
+.heading-sec {
+    font-size: 2.6rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.high-scorer--container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 4rem;
+}
+
+.high-scorer--name {
+    font-size: 3.5rem;
+    font-weight: 800;
+
+}
+
+.high-scorer--score {
+    font-size: 3.5rem;
+    font-weight: 800;
+}
+
+.start-quiz--container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 6rem;
+    gap: 2rem;
+}
+
+.start-quiz--input {
+    height: 4rem;
+    padding: .5rem;
+    border-radius: 5px;
+    border: 1px solid #D1D1D1;
+    font-size: 2.2rem;
+}
+
+.question-category {
+    height: 4rem;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.start-quiz-btn {
+    border: none;
+    background-color: #2F70F2;
+    color: white;
+    padding: 1rem 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 2.2rem;
+    transition: all 0.3s;
+}
+
+.start-quiz-btn:hover {
+    background-color: #1C5AE0;
+}
+
+.loader-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.loader {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: block;
+    margin:15px auto;
+    position: relative;
+    background: #FFF;
+    box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+    box-sizing: border-box;
+    animation: shadowPulse 2s linear infinite;
+}
+  
+@keyframes shadowPulse {
+    33% {
+        background: #FFF;
+        box-shadow: -24px 0 #2F70F2, 24px 0 #FFF;
+    }
+    66% {
+        background: #2F70F2;
+        box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+    }
+    100% {
+        background: #FFF;
+        box-shadow: -24px 0 #FFF, 24px 0 #2F70F2;
+    }
+}
