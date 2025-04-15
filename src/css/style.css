@@ -75,12 +75,6 @@ body {
     font-size: 2.2rem;
 }
 
-.question-category {
-    height: 4rem;
-    border-radius: 5px;
-    background-color: white;
-}
-
 .start-quiz-btn {
     border: none;
     background-color: #2F70F2;
@@ -92,7 +86,130 @@ body {
     transition: all 0.3s;
 }
 
+.question-card--container {
+    height: 100%;
+    position: relative;
+}
+
+.question-category {
+    height: 4rem;
+    border-radius: 5px;
+    background-color: white;
+}
+
 .start-quiz-btn:hover {
+    background-color: #1C5AE0;
+}
+
+.question-progress--container {
+    display: flex;
+    justify-content: center;
+}
+
+.question-progress {
+    color: #2F70F2;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.question-info--container {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.question-difficulty--container {
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.question-timer--container {
+    display: flex;
+    align-items: center;
+    gap: .5rem
+}
+
+.question-difficulty {
+    font-size: 2rem;
+    text-transform: capitalize;
+}
+
+.timer-icon {
+    font-size: 2.4rem;
+}
+
+.question-timer {
+    font-size: 2.3rem;
+    color: darkgreen; 
+    font-weight: 600;
+}
+
+.question-container {
+    margin-top: 4rem;
+}
+
+.question-text {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.option {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    padding: 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.option.active {
+    border: 1px solid #2F70F2;
+    background-color: rgb(47, 112, 242, 0.1);
+}
+
+.option-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.option-input {
+    width: 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.questions-btn--container {
+    position: absolute;
+    display: flex;
+    gap: 2rem;
+    bottom: -2rem;
+    width: 100%;
+}
+
+.question-submit-btn {
+    border: none;
+    width: 50%;
+    border-radius: 5px;
+    font-size: 2rem;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.next-btn {
+    color: white;
+    background-color: #2F70F2;
+    transition: all 0.3s;
+}
+
+.next-btn:hover {
     background-color: #1C5AE0;
 }
 

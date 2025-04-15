@@ -1,4 +1,4 @@
-import { getCategories } from "./model";
+import { getCategories, getQuestions } from "./model";
 import { state } from "./model";
 import setupView from "./views/setupView";
 import quizView from "./views/quizView";
@@ -10,22 +10,21 @@ const controlSetup = async function() {
 }
 
 const controlStartQuiz = async function(name, questions, category) {
-    console.log(name, questions, category);
+    quizView.renderLoader();
+    await getQuestions(questions, category);
+    controlDisplayQuestion();
 }
 
+const controlDisplayQuestion = function(){
+    state.currQuestion++;
+    quizView.render(state.questions[state.currQuestion], state.questions.length, state.currQuestion);
+    quizView.addHandlerChoose();
+}
 
 const init = async function() {
     await controlSetup();
     setupView.addFormHandler(controlStartQuiz);
 }
 
-init()
+init();
 
-
-
-// const func = async function() {
-//     // const res = await fetch(`https://opentdb.com/api.php?amount=10&type=multiple`);
-//     // const {results} = await res.json();
-//     // console.log(results)
-//     console.log(state.categories)
-// }

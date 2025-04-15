@@ -43,7 +43,7 @@ class SetupView{
                     <input type="text" placeholder="No of Questions..." class="start-quiz--input" id="questions-input" required>
                     <select id="question-category-input" name="category" class="question-category">
                     ${this.#data.categories.map((ob) => {
-                        return `<option value="${ob.name}">${ob.name}</option>`
+                        return `<option value="${ob.id}">${ob.name}</option>`
                     }).join('\n')}
                     </select>
                     <button class="start-quiz-btn" type="submit">Start Quiz</button>
