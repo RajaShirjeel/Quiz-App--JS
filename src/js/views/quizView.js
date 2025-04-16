@@ -17,9 +17,27 @@ class QuizView{
         this.#parentEl.insertAdjacentHTML('afterbegin', markup);
     }
 
+    addHandlerNext(handler){
+        const nextBtn = document.querySelector('.next-btn');
+        const skipBtn = document.querySelector('.skip-btn');
+        const options = document.querySelectorAll('.option');
+        let answer;
+        nextBtn.addEventListener('click', (e) => {
+            options.forEach(op => {
+                if (op.classList.contains('active')){
+                    answer = op.querySelector('.option-text').textContent;
+                }
+            })
+            handler('next', answer);
+        })
+        skipBtn.addEventListener('click', (e) => {
+            handler('skip');
+        })
+    }
+
     addHandlerChoose(){
         const optionsContainer = document.querySelector('.options-container');
-        const options = document.querySelectorAll('.option')
+        const options = document.querySelectorAll('.option');
         optionsContainer.addEventListener('click', (e) => {
             const option = e.target.closest('.option');
             if (!option) return;

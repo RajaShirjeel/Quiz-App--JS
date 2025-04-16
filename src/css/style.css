@@ -213,6 +213,51 @@ body {
     background-color: #1C5AE0;
 }
 
+.results-heading {
+    text-align: center;
+    font-size: 3rem;
+    border-bottom: 1px solid black;
+}
+
+.results--info--container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 7rem;
+}
+
+.results--info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.results-text {
+    font-size: 2rem;
+}
+
+.results-value {
+    font-size: 2rem;
+}
+
+.total-score-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15rem;
+}
+
+.total-score-heading {
+    font-size: 3rem;
+}
+
+.total-score {
+    font-size: 3rem;
+    margin-top: 5rem;
+    font-weight: 800;
+}
+
 .loader-container {
     display: flex;
     align-items: center;

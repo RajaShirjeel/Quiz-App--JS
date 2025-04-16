@@ -3,9 +3,14 @@ import { API_URL } from "./config";
 export const state = {
     questions: [],
     categories: [],
-    currQuestion: -1,
+    currQuestion: 0,
     highScorer: {},
-    results: {},
+    results: {
+        points: 0,
+        correctAnswers: 0,
+        wrongAnswers: 0,
+        skippedQuestions: 0,
+    },
 }
 
 export const getCategories = async function() {
@@ -29,4 +34,29 @@ export const getQuestions = async function(questions, category) {
     })
 
     state.questions = questionsArr;
+}
+
+export const updateProgress = function(action, answer) {
+    if (action == 'skip'){
+        state.currQuestion++;
+        state.results.skippedQuestions++;
+        console.log(state.results)
+        return;
+    }
+    if (answer === state.questions[state.currQuestion].correctAns){
+        state.results.points += 4;
+        state.results.correctAnswers++;
+    }
+    else {
+        state.results.points -= 1;
+        state.results.wrongAnswers++;
+    }
+    state.currQuestion++;
+    console.log(state.results)
+    return;
+}
+
+export const isValid = function() {
+    console.log(state.currQuestion)
+    return state.currQuestion <= state.questions.length-1;
 }
