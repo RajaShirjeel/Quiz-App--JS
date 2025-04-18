@@ -1,11 +1,11 @@
 class QuizView{
     #parentEl = document.querySelector('.card');
-    #data;
     #colors = {
         easy: '#6FCF97',
         medium: '#F2C94C',
         hard: '#EB5757'
     }
+    #countdownInterval;
 
     renderLoader() {
         const markup = `
@@ -28,6 +28,7 @@ class QuizView{
                     answer = op.querySelector('.option-text').textContent;
                 }
             })
+            if (!answer) return;
             handler('next', answer);
         })
         skipBtn.addEventListener('click', (e) => {
@@ -50,9 +51,33 @@ class QuizView{
         })
     }
 
-    render(data, totalQuestions, currQuestion){
-        this.#data = data;
+    startCountdown(seconds) {
+        clearInterval(this.#countdownInterval);
+        const timerEl = document.querySelector('.question-timer');
+        let timeLeft = seconds;
+        timerEl.textContent = timeLeft;
 
+        this.#countdownInterval = setInterval(() => {
+            if (seconds == 60) {
+                if (timeLeft == 30) timerEl.style.color = '#F2C94C';
+                else if (timeLeft == 15) timerEl.style.color = '#800000'
+            }
+            else if (seconds == 30) {
+                if (timeLeft == 20) timerEl.style.color = '#F2C94C';
+                else if (timeLeft == 10) timerEl.style.color = '#800000';
+            }
+            else {
+                if (timeLeft == 10) timerEl.style.color = '#F2C94C';
+                else if (timeLeft == 5) timerEl.style.color = '#800000';
+            }
+            timeLeft--;
+            timerEl.textContent = timeLeft;
+            if (timeLeft <= 0) clearInterval(this.#countdownInterval);
+        }, 1000);
+    
+    }
+
+    render(data, totalQuestions, currQuestion){
         const markup = `
             <div class="question-card--container">
                 <div class="question-progress--container">
@@ -64,10 +89,10 @@ class QuizView{
                     </div>
                     <div class="question-timer--container">
                         <ion-icon name="alarm-outline" class="timer-icon"></ion-icon>
-                        <p class="question-timer">20</p>
+                        <p class="question-timer">10</p>
                     </div>
                 </div>
-                <div class="question-container">
+                <div class="question-container" inert>
                     <p class="question-text">${data.question}</p>
                 </div>
                 <div class="options-container">

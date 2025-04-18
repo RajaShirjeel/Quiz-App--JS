@@ -1,10 +1,14 @@
 import { API_URL } from "./config";
 
 export const state = {
+    username: '',
     questions: [],
     categories: [],
     currQuestion: 0,
-    highScorer: {},
+    highScorer: {
+        username: '',
+        score: 0,
+    },
     results: {
         points: 0,
         correctAnswers: 0,
@@ -19,7 +23,8 @@ export const getCategories = async function() {
     state.categories = trivia_categories;
 }
 
-export const getQuestions = async function(questions, category) {
+export const getQuestions = async function(questions, category, name) {
+    state.username = name;
     const res = await fetch(`${API_URL}/api.php?amount=${questions}&category=${category}&type=multiple`);
     const {results} = await res.json();
     const questionsArr = results.map(q => {
@@ -37,10 +42,10 @@ export const getQuestions = async function(questions, category) {
 }
 
 export const updateProgress = function(action, answer) {
-    if (action == 'skip'){
+    console.log(action)
+    if (action === 'skip'){
         state.currQuestion++;
         state.results.skippedQuestions++;
-        console.log(state.results)
         return;
     }
     if (answer === state.questions[state.currQuestion].correctAns){
@@ -52,11 +57,13 @@ export const updateProgress = function(action, answer) {
         state.results.wrongAnswers++;
     }
     state.currQuestion++;
-    console.log(state.results)
     return;
 }
 
 export const isValid = function() {
-    console.log(state.currQuestion)
     return state.currQuestion <= state.questions.length-1;
+}
+
+export const getDifficulty = function() {
+    return state.questions[state.currQuestion].difficulty;
 }
