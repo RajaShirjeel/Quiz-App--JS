@@ -1,4 +1,4 @@
-import { getCategories, getDifficulty, getQuestions, isValid, updateProgress } from "./model";
+import { getCategories, getDifficulty, getHighScorer, getQuestions, isValid, saveHighScore, updateProgress } from "./model";
 import { state } from "./model";
 import setupView from "./views/setupView";
 import quizView from "./views/quizView";
@@ -14,6 +14,7 @@ const timeout = function(seconds) {
 
 const controlSetup = async function() {
     setupView.renderLoader();
+    getHighScorer();
     await getCategories();
     setupView.render(state);
 }
@@ -39,7 +40,7 @@ const controlDisplayNextQuestion = function(action, answer, timeoutId){
     updateProgress(action, answer);
     if (!isValid()) {
         resultsView.render(state.results, state.questions.length);
-        saveHighScore();
+        saveHighScore()
         return;
     };
     const difficulty = getDifficulty().toUpperCase();

@@ -35,8 +35,8 @@ class SetupView{
             <div class="front-page--info">
                 <p class="heading-sec">Highest Points Scored</p>
                 <div class="high-scorer--container">
-                <p class="high-scorer--name">John Doe</p>
-                <p class="high-scorer--score">72</p>
+                <p class="high-scorer--name">${this.#data.highScorer.username}</p>
+                <p class="high-scorer--score">${this.#data.highScorer.score}</p>
                 </div>
                 <form class="start-quiz--container">
                     <input type="text" placeholder="Name..." class="start-quiz--input" id="name-input" required>

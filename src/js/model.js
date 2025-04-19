@@ -67,3 +67,19 @@ export const isValid = function() {
 export const getDifficulty = function() {
     return state.questions[state.currQuestion].difficulty;
 }
+
+export const saveHighScore = function() {
+    const score = state.results.points;
+    state.highScorer.score = score;
+    state.highScorer.username = state.username;
+    console.log(localStorage.getItem('highScorer'))
+    const oldHighScorer = JSON.parse(localStorage.getItem('highScorer'));
+    if (!oldHighScorer || oldHighScorer.score < score) {
+        localStorage.setItem('highScorer', JSON.stringify(state.highScorer));
+    }
+}
+
+export const getHighScorer = function() {
+    const highScorer = JSON.parse(localStorage.getItem('highScorer'));
+    state.highScorer = highScorer;
+}
